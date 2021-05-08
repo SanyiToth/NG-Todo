@@ -1,10 +1,11 @@
-<form #todoForm="ngForm" (submit)="addTodo()" [formGroup]="myTodo">
-    <div>
-        <label for="todo">Todo<br>
-            <input type="text" id="todo" formControlName="newTodo">
-        </label>
-        <button type="submit" [disabled]="todoForm.invalid">add todo</button>
-
+<mat-card>
+    <form #todoForm="ngForm" (submit)="addTodo()" [formGroup]="myTodo">
+        <div class="add-todo">
+            <label for="todo">Todo<br>
+                <input type="text" id="todo" formControlName="newTodo">
+            </label>
+            <button type="submit" [disabled]="todoForm.invalid">add todo</button>
+        </div>
         <div class="error" *ngIf="newTodo?.invalid && newTodo?.touched && newTodo?.errors?.required">
             Please add a new Todo!
         </div>
@@ -13,17 +14,19 @@
             Todo should be at least 6 characters long!
         </div>
 
+
+    </form>
+
+
+    <div>
+        <mat-list *ngFor="let todo of todos;let i=index">
+            <mat-list-item>
+                <p>{{todo.text}}</p>
+                <div class="mat-list-item--buttons">
+                    <button (click)="removeTodo(todo.id)">Delete</button>
+                    <button routerLink="/edit/{{todo.id}}">Edit</button>
+                </div>
+            </mat-list-item>
+        </mat-list>
     </div>
-</form>
-
-
-<div>
-    <ul *ngFor="let todo of todos;let i=index">
-        <li>{{todo.text}}
-            <button (click)="removeTodo(todo.id)">Delete</button>
-            <a routerLink="/edit/{{todo.id}}">
-                <button>Edit</button>
-            </a>
-        </li>
-    </ul>
-</div>
+</mat-card>

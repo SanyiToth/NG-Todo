@@ -4,6 +4,7 @@ import {AppComponent} from './app.component';
 import {TodoModule} from "./todo/todo.module";
 import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
@@ -13,7 +14,8 @@ import {AppRoutingModule} from './app-routing.module';
         BrowserModule,
         TodoModule,
         HttpClientModule,
-        AppRoutingModule
+        AppRoutingModule,
+        BrowserAnimationsModule
     ],
     exports: [
         TodoModule

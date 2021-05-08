@@ -1,3 +1,9 @@
+mat-card {
+    background: lightgray;
+    width: 100%;
+    margin: 0 auto;
+}
+
 input.ng-invalid.ng-touched {
     border: 1px solid red;
     border-left: 5px solid red;
@@ -13,4 +19,9 @@ input.ng-valid.ng-touched {
     color: red;
     font-size: 10px;
     margin-top: 2px;
+}
+
+
+mat-list-item p {
+    min-width: 200px;
 }

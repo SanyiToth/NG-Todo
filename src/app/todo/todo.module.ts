@@ -4,7 +4,8 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {TodoComponent} from "./todo.component";
 import {EditTodoComponent} from "../edit-todo/edit-todo.component";
-
+import {MatListModule} from '@angular/material/list';
+import { MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -15,7 +16,9 @@ import {EditTodoComponent} from "../edit-todo/edit-todo.component";
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        RouterModule
+        RouterModule,
+        MatListModule,
+        MatCardModule
     ],
     exports: [
         TodoComponent,

@@ -15,7 +15,8 @@ export class EditTodoComponent implements OnInit {
     todo: Todo;
     errorMessage;
     myTodo: FormGroup = new FormGroup({
-        changedTodo: new FormControl(null, [Validators.required, Validators.minLength(6)])
+        changedTodo: new FormControl(null,
+            [Validators.required, Validators.minLength(6)])
     });
     response = false;
 
