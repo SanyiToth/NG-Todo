@@ -26,7 +26,6 @@ export class TodoComponent implements OnInit {
         })
     };
 
-
     createMyForm(): FormGroup {
         return this.formBuilder.group({
             newTodo: [null, [Validators.required, Validators.minLength(6)]]
@@ -40,10 +39,15 @@ export class TodoComponent implements OnInit {
     }
 
     removeTodo(i) {
-        if (i > -1) {
-            this.todos.splice(i, 1);
-        }
-        console.log(this.todos);
+        this.todoService.deleteTodo(i).subscribe(todo => {
+            console.log('deleteTodo', todo);
+        })
+        this.todoService.getTodos().subscribe(todos => {
+            console.log("todos", todos)
+            this.todos = todos;
+        }, errorMsg => {
+            this.errorMessage = errorMsg
+        })
     }
 
     get newTodo(): AbstractControl | null {

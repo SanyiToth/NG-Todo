@@ -1,16 +1,16 @@
 {
   "todos": [
     {
-      "id": 1,
-      "todo": "kutyát sétáltatni"
-    },
-    {
-      "id": 2,
-      "todo": "levinni a szemetet"
-    },
-    {
       "id": 3,
-      "todo": "elmosogatni"
+      "text": "Lorem ipsum dolor sit amet, consectetur a"
+    },
+    {
+      "id": 6,
+      "text": "Lorem ipsum dolor sit amet, consectetur a"
+    },
+    {
+      "id": 7,
+      "text": "Lorem ipsum dolor sit amet, consectetur a"
     }
   ]
 }

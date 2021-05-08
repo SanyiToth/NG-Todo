@@ -4,6 +4,7 @@
             <input type="text" id="todo" formControlName="newTodo">
         </label>
         <button type="submit" [disabled]="todoForm.invalid">add todo</button>
+
         <div class="error" *ngIf="newTodo?.invalid && newTodo?.touched && newTodo?.errors?.required">
             Please add a new Todo!
         </div>
@@ -17,9 +18,9 @@
 
 
 <div>
-    <ul *ngFor="let todo of todos; let i=index">
-        <li>{{todo.todo}}
-            <button (click)="removeTodo(i)">Delete</button>
+    <ul *ngFor="let todo of todos;">
+        <li>{{todo.text}}
+            <button (click)="removeTodo(todo.id)">Delete</button>
         </li>
     </ul>
 </div>

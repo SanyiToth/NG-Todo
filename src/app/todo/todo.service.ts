@@ -15,4 +15,10 @@ export class TodoService {
     getTodos(): Observable<Todo[]> {
         return this.http.get<Todo[]>(TodoService.API_URL);
     }
+
+    deleteTodo(id: number): Observable<any> {
+        return this.http.delete(TodoService.API_URL + `/${id}`);
+    }
+
+
 }
