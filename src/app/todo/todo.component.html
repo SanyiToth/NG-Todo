@@ -18,9 +18,10 @@
 
 
 <div>
-    <ul *ngFor="let todo of todos;">
-        <li>{{todo.text}}
+    <ul *ngFor="let todo of todos;let i=index">
+        <li>{{i}}{{todo.text}}
             <button (click)="removeTodo(todo.id)">Delete</button>
+            {{todo.id}}
         </li>
     </ul>
 </div>

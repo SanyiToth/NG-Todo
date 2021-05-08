@@ -17,6 +17,7 @@ export class TodoComponent implements OnInit {
         this.myTodo = this.createMyForm();
     }
 
+
     ngOnInit(): void {
         this.todoService.getTodos().subscribe(todos => {
             console.log("todos", todos)
@@ -33,20 +34,17 @@ export class TodoComponent implements OnInit {
     }
 
     addTodo(): void {
-        console.log(this.newTodo.value)
-        this.todos.push(this.newTodo.value)
+        const todo = {text: this.newTodo.value}
+        this.todoService.addTodo(todo).subscribe(response => {
+            console.log('addTodo', response)
+        })
         this.myTodo.reset();
     }
 
-    removeTodo(i) {
-        this.todoService.deleteTodo(i).subscribe(todo => {
+    removeTodo(id) {
+        console.log('id', id);
+        this.todoService.deleteTodo(id).subscribe(todo => {
             console.log('deleteTodo', todo);
-        })
-        this.todoService.getTodos().subscribe(todos => {
-            console.log("todos", todos)
-            this.todos = todos;
-        }, errorMsg => {
-            this.errorMessage = errorMsg
         })
     }
 
