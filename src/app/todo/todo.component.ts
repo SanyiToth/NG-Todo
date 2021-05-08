@@ -34,4 +34,10 @@ export class TodoComponent implements OnInit {
         return this.myTodo.get('newTodo');
     }
 
+    removeTodo(i) {
+        if (i > -1) {
+            this.todos.splice(i, 1);
+        }
+        console.log(this.todos);
+    }
 }
