@@ -1,19 +1,25 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {TodoComponent} from "./todo.component";
 import {ReactiveFormsModule} from "@angular/forms";
+import {RouterModule} from "@angular/router";
+import {TodoComponent} from "./todo.component";
+import {EditTodoComponent} from "../edit-todo/edit-todo.component";
+
 
 
 @NgModule({
     declarations: [
-        TodoComponent
+        TodoComponent,
+        EditTodoComponent
     ],
     imports: [
         CommonModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        RouterModule
     ],
     exports: [
-        TodoComponent
+        TodoComponent,
+        EditTodoComponent
     ]
 })
 export class TodoModule {

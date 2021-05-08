@@ -37,14 +37,19 @@ export class TodoComponent implements OnInit {
         const todo = {text: this.newTodo.value}
         this.todoService.addTodo(todo).subscribe(response => {
             console.log('addTodo', response)
+            this.todos = [response, ...this.todos]
         })
+
         this.myTodo.reset();
     }
 
     removeTodo(id) {
-        console.log('id', id);
         this.todoService.deleteTodo(id).subscribe(todo => {
-            console.log('deleteTodo', todo);
+            this.todoService.getTodos().subscribe(todos => {
+                this.todos = todos;
+            }, errorMsg => {
+                this.errorMessage = errorMsg
+            })
         })
     }
 

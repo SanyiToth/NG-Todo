@@ -1,16 +1,20 @@
 {
   "todos": [
     {
-      "id": 8,
-      "text": "Lorem ipsum dolor sit amet, consectetur a"
+      "text": "elmosogatni",
+      "id": 1
     },
     {
-      "id": 9,
-      "text": "Lorem ipsum dolor sit amet, consectetur a"
+      "text": "takarítás",
+      "id": 2
     },
     {
-      "text": "mosáss",
-      "id": 10
+      "text": "takarítás",
+      "id": 3
+    },
+    {
+      "text": "takarítás",
+      "id": 4
     }
   ]
 }

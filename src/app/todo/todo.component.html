@@ -19,9 +19,11 @@
 
 <div>
     <ul *ngFor="let todo of todos;let i=index">
-        <li>{{i}}{{todo.text}}
+        <li>{{todo.text}}
             <button (click)="removeTodo(todo.id)">Delete</button>
-            {{todo.id}}
+            <a routerLink="/edit/{{todo.id}}">
+                <button>Edit</button>
+            </a>
         </li>
     </ul>
 </div>
