@@ -7,7 +7,8 @@
   },
   "files": [
     "src/main.ts",
-    "src/polyfills.ts"
+    "src/polyfills.ts",
+    "src/app/todo/todo.interface.ts"
   ],
   "include": [
     "src/**/*.d.ts"
