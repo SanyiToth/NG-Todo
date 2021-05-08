@@ -1,10 +1,6 @@
 {
   "todos": [
     {
-      "text": "elmosogatni",
-      "id": 1
-    },
-    {
       "text": "takarítás",
       "id": 2
     },
@@ -13,8 +9,12 @@
       "id": 3
     },
     {
-      "text": "takarítás",
+      "text": "levinni a kutyát",
       "id": 4
+    },
+    {
+      "text": "akármi",
+      "id": 5
     }
   ]
 }

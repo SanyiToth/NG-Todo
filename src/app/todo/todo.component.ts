@@ -46,6 +46,7 @@ export class TodoComponent implements OnInit {
     removeTodo(id) {
         this.todoService.deleteTodo(id).subscribe(todo => {
             this.todoService.getTodos().subscribe(todos => {
+                console.log("todos", todos);
                 this.todos = todos;
             }, errorMsg => {
                 this.errorMessage = errorMsg
