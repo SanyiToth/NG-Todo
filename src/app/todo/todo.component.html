@@ -1,7 +1,16 @@
-<form>
-    <label for="todo">Todo
-        <br>
-        <input type="text" id="todo">
-    </label>
-    <button type="submit">add todo</button>
+<form #todoForm="ngForm" (submit)="addTodo()" [formGroup]="myTodo">
+
+    <div>
+        <label for="todo">Todo<br>
+            <input type="text" id="todo" formControlName="newTodo">
+        </label>
+        <button type="submit" [disabled]="todoForm.invalid">add todo</button>
+    </div>
+
+    <div>
+        <ul *ngFor="let todo of todos">
+            <li>{{todo}}</li>
+        </ul>
+    </div>
+
 </form>
