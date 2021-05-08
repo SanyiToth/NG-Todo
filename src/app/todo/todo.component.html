@@ -4,6 +4,14 @@
             <input type="text" id="todo" formControlName="newTodo">
         </label>
         <button type="submit" [disabled]="todoForm.invalid">add todo</button>
+        <div class="error" *ngIf="newTodo?.invalid && newTodo?.touched && newTodo?.errors?.required">
+            Please add a new Todo!
+        </div>
+
+        <div class="error" *ngIf="newTodo?.invalid && newTodo?.touched && newTodo.errors?.minlength">
+            Todo should be at least 6 characters long!
+        </div>
+
     </div>
 </form>
 

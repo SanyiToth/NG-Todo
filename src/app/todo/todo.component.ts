@@ -20,7 +20,7 @@ export class TodoComponent implements OnInit {
 
     createMyForm(): FormGroup {
         return this.formBuilder.group({
-            newTodo: [null, Validators.required]
+            newTodo: [null, [Validators.required, Validators.minLength(6)]]
         });
     }
 
