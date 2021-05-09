@@ -43,7 +43,20 @@ export class TodoComponent implements OnInit {
         this.myTodo.reset();
     }
 
+    updateTodos(todos): void {
+        this.todos = todos;
+    }
 
+    removeTodo(id) {
+        this.todoService.deleteTodo(id).subscribe(todo => {
+            this.todoService.getTodos().subscribe(todos => {
+                console.log("todos", todos);
+                this.todos = todos;
+            }, errorMsg => {
+                this.errorMessage = errorMsg
+            })
+        })
+    }
 
     get newTodo(): AbstractControl | null {
         return this.myTodo.get('newTodo');

@@ -49,7 +49,7 @@ export class EditTodoComponent implements OnInit {
                 this.router.navigate([""]).then(response2 => {
                     console.log("response2", response2)
                 })
-            }, 2000)
+            }, 1000)
         })
     }
 

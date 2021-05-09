@@ -17,4 +17,4 @@
 </mat-card>
 
 
-<todo-list [todos]="todos"></todo-list>
+<todo-list [todos]="todos" (newDeleteEvent)="removeTodo($event)"></todo-list>

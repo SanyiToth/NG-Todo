@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Todo} from '../todo.interface';
 import {TodoService} from "../todo.service";
+import {Output, EventEmitter} from '@angular/core';
 
 @Component({
     selector: 'todo-list',
@@ -11,7 +12,7 @@ import {TodoService} from "../todo.service";
                     <mat-list-item>
                         <p>{{todo.text}}</p>
                         <div class="mat-list-item--buttons">
-                            <button (click)="removeTodo(todo.id)">Delete</button>
+                            <button (click)="removeTodoItem(todo.id)">Delete</button>
                             <button routerLink="/edit/{{todo.id}}">Edit</button>
                         </div>
                     </mat-list-item>
@@ -29,24 +30,18 @@ import {TodoService} from "../todo.service";
 export class TodoListComponent implements OnInit {
 
     @Input() todos: Todo[];
-    errorMessage = '';
+    @Output() newDeleteEvent = new EventEmitter<number>();
 
-    constructor(private todoService: TodoService) {
+    constructor() {
     }
 
     ngOnInit(): void {
     }
 
-
-    removeTodo(id) {
-        this.todoService.deleteTodo(id).subscribe(todo => {
-            this.todoService.getTodos().subscribe(todos => {
-                console.log("todos", todos);
-                this.todos = todos;
-            }, errorMsg => {
-                this.errorMessage = errorMsg
-            })
-        })
+    removeTodoItem(value: number) {
+        this.newDeleteEvent.emit(value);
     }
+
+
 
 }
