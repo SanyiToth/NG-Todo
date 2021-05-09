@@ -1,21 +1,16 @@
-<div *ngIf="!response">
-    <form #todoForm="ngForm" (submit)="saveTodo()" [formGroup]="myTodo">
-        <label for="todo">Give a new Todo text:</label><br>
-        <input type="text" id="todo" [placeholder]="todo?.text" formControlName="changedTodo">
-        <div class="error" *ngIf="changedTodo?.invalid && changedTodo?.touched && changedTodo?.errors?.required">
-            Please add a new Todo!
-        </div>
-        <div class="error" *ngIf="changedTodo?.invalid && changedTodo?.touched && changedTodo.errors?.minlength">
-            Todo should be at least 6 characters long!
-        </div>
-        <button type="submit" [disabled]="todoForm.invalid">Save Changes</button>
-    </form>
-</div>
+<form #todoForm="ngForm" (submit)="saveTodo()" [formGroup]="myTodo">
+    <label for="todo">Give a new Todo text:</label><br>
+    <input type="text" id="todo" [placeholder]="todo?.text" formControlName="changedTodo">
+    <div class="error" *ngIf="changedTodo?.invalid && changedTodo?.touched && changedTodo?.errors?.required">
+        Please add a new Todo!
+    </div>
+    <div class="error" *ngIf="changedTodo?.invalid && changedTodo?.touched && changedTodo.errors?.minlength">
+        Todo should be at least 6 characters long!
+    </div>
+    <button type="submit" [disabled]="todoForm.invalid">Save Changes</button>
+</form>
 
 
-<div *ngIf="response">
-    <h3>Todo Changed</h3>
-    <button routerLink="/">Back to Todos</button>
-</div>
+
 
 

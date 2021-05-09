@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {TodoService} from "../todo/todo.service";
 import {switchMap, tap} from "rxjs/operators";
 import {Todo} from "../todo/todo.interface";
 import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
+
 
 @Component({
     selector: 'todo-edit-todo',
@@ -18,9 +19,8 @@ export class EditTodoComponent implements OnInit {
         changedTodo: new FormControl(null,
             [Validators.required, Validators.minLength(6)])
     });
-    response = false;
 
-    constructor(private route: ActivatedRoute, private todoService: TodoService) {
+    constructor(private route: ActivatedRoute, private todoService: TodoService, private router: Router) {
     }
 
     ngOnInit(): void {
@@ -41,9 +41,10 @@ export class EditTodoComponent implements OnInit {
 
     saveTodo() {
         const todo: Todo = {text: this.changedTodo.value}
-        this.todoService.updateTodo(this.id, todo).subscribe(response => {
-            console.log(response);
-            this.response = true;
+        this.todoService.updateTodo(this.id, todo).subscribe(response1 => {
+            this.router.navigate([""]).then(response2 => {
+                console.log("response2",response2)
+            })
         })
     }
 

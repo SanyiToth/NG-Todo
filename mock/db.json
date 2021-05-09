@@ -1,20 +1,3 @@
 {
-  "todos": [
-    {
-      "text": "mosásss",
-      "id": 1
-    },
-    {
-      "text": "akarmi",
-      "id": 2
-    },
-    {
-      "text": "valami",
-      "id": 3
-    },
-    {
-      "text": "takarítás",
-      "id": 4
-    }
-  ]
+  "todos": []
 }
