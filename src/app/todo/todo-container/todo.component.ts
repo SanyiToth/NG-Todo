@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Todo} from './todo.interface';
-import {TodoService} from './todo.service';
+import {Todo} from '../todo.interface';
+import {TodoService} from '../todo.service';
 
 @Component({
     selector: 'app-todo',

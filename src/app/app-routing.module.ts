@@ -1,8 +1,9 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
-import {TodoComponent} from "./todo/todo.component";
-import {EditTodoComponent} from "./edit-todo/edit-todo.component";
+import {TodoComponent} from "./todo/todo-container/todo.component";
+import {EditTodoComponent} from "./todo/edit-todo/edit-todo.component";
+
 
 const routes: Routes = [
     {path: '', component: TodoComponent},

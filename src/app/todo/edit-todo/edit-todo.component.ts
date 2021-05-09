@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {TodoService} from "../todo/todo.service";
+import {TodoService} from "../todo.service";
 import {switchMap, tap} from "rxjs/operators";
-import {Todo} from "../todo/todo.interface";
+import {Todo} from "../todo.interface";
 import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
 
 

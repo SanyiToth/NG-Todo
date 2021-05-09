@@ -14,17 +14,18 @@
             Todo should be at least 6 characters long!
         </div>
     </form>
-
-
-    <div>
-        <mat-list *ngFor="let todo of todos;let i=index">
-            <mat-list-item>
-                <p>{{todo.text}}</p>
-                <div class="mat-list-item--buttons">
-                    <button (click)="removeTodo(todo.id)">Delete</button>
-                    <button routerLink="/edit/{{todo.id}}">Edit</button>
-                </div>
-            </mat-list-item>
-        </mat-list>
-    </div>
 </mat-card>
+
+<div>
+    <mat-list *ngFor="let todo of todos;let i=index">
+        <mat-list-item>
+            <p>{{todo.text}}</p>
+            <div class="mat-list-item--buttons">
+                <button (click)="removeTodo(todo.id)">Delete</button>
+                <button routerLink="/edit/{{todo.id}}">Edit</button>
+            </div>
+        </mat-list-item>
+    </mat-list>
+</div>
+
+<todo-list></todo-list>
