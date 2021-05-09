@@ -6,6 +6,7 @@ import {TodoService} from "../todo.service";
     selector: 'todo-list',
     template: `
         <mat-card>
+            <div *ngIf="todos">
                 <mat-list *ngFor="let todo of todos;let i=index">
                     <mat-list-item>
                         <p>{{todo.text}}</p>
@@ -15,6 +16,12 @@ import {TodoService} from "../todo.service";
                         </div>
                     </mat-list-item>
                 </mat-list>
+            </div>
+
+            <div *ngIf="todos.length===0">
+                <h2>No todos yet</h2>
+            </div>
+
         </mat-card>
     `,
     styleUrls: ["todo-list.component.css"]
