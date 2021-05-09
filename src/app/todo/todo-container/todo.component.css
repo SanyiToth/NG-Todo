@@ -1,6 +1,6 @@
 mat-card {
-    width: 100%;
-    margin: 0 auto;
+    width: 40%;
+    margin: 10px auto;
 }
 
 input.ng-invalid.ng-touched {
@@ -21,6 +21,4 @@ input.ng-valid.ng-touched {
 }
 
 
-mat-list-item p {
-    min-width: 200px;
-}
+

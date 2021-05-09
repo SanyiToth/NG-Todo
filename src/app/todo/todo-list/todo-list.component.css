@@ -1,0 +1,7 @@
+mat-card {
+    width: 40%;
+    margin: 10px auto;
+}
+mat-list-item p {
+    min-width: 250px;
+}

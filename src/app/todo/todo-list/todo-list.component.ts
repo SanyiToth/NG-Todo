@@ -1,20 +1,45 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Todo} from '../todo.interface';
+import {TodoService} from "../todo.service";
 
 @Component({
-  selector: 'todo-list',
-  template: `
-    <p>
-      todo-list works!
-    </p>
-  `,
-  styles: [
-  ]
+    selector: 'todo-list',
+    template: `
+        <mat-card>
+                <mat-list *ngFor="let todo of todos;let i=index">
+                    <mat-list-item>
+                        <p>{{todo.text}}</p>
+                        <div class="mat-list-item--buttons">
+                            <button (click)="removeTodo(todo.id)">Delete</button>
+                            <button routerLink="/edit/{{todo.id}}">Edit</button>
+                        </div>
+                    </mat-list-item>
+                </mat-list>
+        </mat-card>
+    `,
+    styleUrls: ["todo-list.component.css"]
 })
 export class TodoListComponent implements OnInit {
 
-  constructor() { }
+    @Input() todos: Todo[];
+    errorMessage = '';
 
-  ngOnInit(): void {
-  }
+    constructor(private todoService: TodoService) {
+    }
+
+    ngOnInit(): void {
+    }
+
+
+    removeTodo(id) {
+        this.todoService.deleteTodo(id).subscribe(todo => {
+            this.todoService.getTodos().subscribe(todos => {
+                console.log("todos", todos);
+                this.todos = todos;
+            }, errorMsg => {
+                this.errorMessage = errorMsg
+            })
+        })
+    }
 
 }
