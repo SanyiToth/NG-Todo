@@ -19,6 +19,7 @@ export class EditTodoComponent implements OnInit {
         changedTodo: new FormControl(null,
             [Validators.required, Validators.minLength(6)])
     });
+    successAlert = false;
 
     constructor(private route: ActivatedRoute, private todoService: TodoService, private router: Router) {
     }
@@ -42,9 +43,13 @@ export class EditTodoComponent implements OnInit {
     saveTodo() {
         const todo: Todo = {text: this.changedTodo.value}
         this.todoService.updateTodo(this.id, todo).subscribe(response1 => {
-            this.router.navigate([""]).then(response2 => {
-                console.log("response2",response2)
-            })
+            this.myTodo.reset();
+            this.successAlert = true;
+            setTimeout(() => {
+                this.router.navigate([""]).then(response2 => {
+                    console.log("response2", response2)
+                })
+            }, 2000)
         })
     }
 
