@@ -46,9 +46,7 @@ export class EditTodoComponent implements OnInit {
             this.myTodo.reset();
             this.successAlert = true;
             setTimeout(() => {
-                this.router.navigate([""]).then(response2 => {
-                    console.log("response2", response2)
-                })
+                this.router.navigate([""])
             }, 1000)
         })
     }

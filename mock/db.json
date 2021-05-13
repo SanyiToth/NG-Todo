@@ -1,16 +1,3 @@
 {
-  "todos": [
-    {
-      "text": "főzésss",
-      "id": 1
-    },
-    {
-      "text": "főzésss",
-      "id": 2
-    },
-    {
-      "text": "kutyát sétáltatni",
-      "id": 3
-    }
-  ]
+  "todos": []
 }
