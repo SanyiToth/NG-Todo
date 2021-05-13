@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Todo} from '../todo.interface';
 import {TodoService} from '../todo.service';
+import {switchMap} from "rxjs/operators";
 
 @Component({
     selector: 'app-todo',
@@ -43,19 +44,25 @@ export class TodoComponent implements OnInit {
         this.myTodo.reset();
     }
 
-    updateTodos(todos): void {
-        this.todos = todos;
-    }
-
     removeTodo(id) {
-        this.todoService.deleteTodo(id).subscribe(todo => {
-            this.todoService.getTodos().subscribe(todos => {
-                console.log("todos", todos);
-                this.todos = todos;
-            }, errorMsg => {
-                this.errorMessage = errorMsg
-            })
-        })
+        /*  this.todoService.deleteTodo(id).subscribe(todo => {
+              this.todoService.getTodos().subscribe(todos => {
+                  console.log("todos", todos);
+                  this.todos = todos;
+              }, errorMsg => {
+                  this.errorMessage = errorMsg
+              })
+          })*/
+
+        this.todoService.deleteTodo(id)
+            .pipe(
+                switchMap(() => this.todoService.getTodos()))
+            .subscribe(todos => {
+                    this.todos = todos;
+                }, errorMsg => {
+                    this.errorMessage = errorMsg;
+                }
+            )
     }
 
     get newTodo(): AbstractControl | null {

@@ -7,6 +7,7 @@ import {EditTodoComponent} from "./edit-todo/edit-todo.component";
 import {MatListModule} from '@angular/material/list';
 import { MatCardModule} from '@angular/material/card';
 import { TodoListComponent } from './todo-list/todo-list.component';
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { TodoListComponent } from './todo-list/todo-list.component';
         ReactiveFormsModule,
         RouterModule,
         MatListModule,
-        MatCardModule
+        MatCardModule,
+        HttpClientModule,
     ],
     exports: [
         TodoComponent,

@@ -1,11 +1,15 @@
 {
   "todos": [
     {
-      "text": "sasaaa",
+      "text": "főzésss",
+      "id": 1
+    },
+    {
+      "text": "főzésss",
       "id": 2
     },
     {
-      "text": "takarítás",
+      "text": "kutyát sétáltatni",
       "id": 3
     }
   ]
