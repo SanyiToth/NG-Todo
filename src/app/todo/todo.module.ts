@@ -30,7 +30,6 @@ import { MatInputModule} from "@angular/material/input";
         MatButtonModule,
         MatIconModule,
         MatInputModule,
-        FormsModule
     ],
     exports: [
         TodoComponent,

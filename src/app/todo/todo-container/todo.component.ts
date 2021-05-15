@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Todo} from '../todo.interface';
 import {TodoService} from '../todo.service';
 import {switchMap} from "rxjs/operators";
@@ -10,12 +10,16 @@ import {switchMap} from "rxjs/operators";
     styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit {
-    myTodo: FormGroup;
+    myTodo: FormGroup = new FormGroup({
+            newTodo: new FormControl(null,
+                [Validators.required, Validators.minLength(6)])
+        }, Validators.required
+    );
     todos: Todo[];
     errorMessage = '';
 
     constructor(private formBuilder: FormBuilder, private todoService: TodoService) {
-        this.myTodo = this.createMyForm();
+        /*  this.myTodo = this.createMyForm();*/
     }
 
 
@@ -28,11 +32,11 @@ export class TodoComponent implements OnInit {
         })
     };
 
-    createMyForm(): FormGroup {
-        return this.formBuilder.group({
-            newTodo: [null, [Validators.required, Validators.minLength(6)]]
-        });
-    }
+    /*    createMyForm(): FormGroup {
+            return this.formBuilder.group({
+                newTodo: [null, [Validators.required, Validators.minLength(6)]]
+            });
+        }*/
 
     addTodo(): void {
         const todo = {text: this.newTodo.value}
@@ -40,12 +44,12 @@ export class TodoComponent implements OnInit {
             console.log('addTodo', response)
             this.todos = [response, ...this.todos]
         })
+        console.log('myTodo', this.myTodo);
 
-        this.myTodo.reset();
+        this.newTodo.reset();
     }
 
     removeTodo(id) {
-
         this.todoService.deleteTodo(id)
             .pipe(
                 switchMap(() => this.todoService.getTodos()))
