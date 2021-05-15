@@ -1,20 +1,27 @@
-<mat-card>
-    <form #todoForm="ngForm" (submit)="saveTodo()" [formGroup]="myTodo">
-        <label for="todo">Give a new Todo text:</label><br>
-        <input type="text" id="todo" [placeholder]="todo?.text" formControlName="changedTodo">
+<form #todoForm="ngForm" (submit)="saveTodo()" [formGroup]="myTodo">
+    <div class="change-todo">
+        <mat-form-field class="new-todo-form-field">
+            <mat-label>Clearable input</mat-label>
+            <input matInput type="text" formControlName="changedTodo" [value]="todo?.text">
+            <button mat-button  *ngIf="changedTodo.value" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="clearValue($event)">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+        <button mat-flat-button type="submit" [disabled]="todoForm.invalid">Save Changes</button>
         <div class="error" *ngIf="changedTodo?.invalid && changedTodo?.touched && changedTodo?.errors?.required">
             Please add a new Todo!
         </div>
         <div class="error" *ngIf="changedTodo?.invalid && changedTodo?.touched && changedTodo.errors?.minlength">
             Todo should be at least 6 characters long!
         </div>
-        <button type="submit" [disabled]="todoForm.invalid">Save Changes</button>
-    </form>
-
-    <div *ngIf="successAlert" style="color: greenyellow">
-        <h3>Your Todo has been changed!</h3>
     </div>
-</mat-card>
+</form>
+
+<div class="success" *ngIf="successAlert" style="color: greenyellow">
+    <h2>Your Todo has been changed!</h2>
+</div>
+
 
 
 

@@ -62,8 +62,8 @@ export class TodoComponent implements OnInit {
     }
 
 
-    clearValue(event) {
+    clearValue($event: MouseEvent) {
         this.newTodo.reset();
-        event.stopPropagation();
+        $event.stopPropagation();
     }
 }

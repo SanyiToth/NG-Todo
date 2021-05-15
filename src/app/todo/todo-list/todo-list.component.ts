@@ -19,7 +19,7 @@ import {Output, EventEmitter} from '@angular/core';
             </mat-card>
         </div>
 
-        <mat-card *ngIf="todos.length===0">
+        <mat-card *ngIf="todos?.length===0">
             <h2>No todos yet</h2>
         </mat-card>
     `,

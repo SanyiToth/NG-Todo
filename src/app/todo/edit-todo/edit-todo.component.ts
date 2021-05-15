@@ -54,4 +54,9 @@ export class EditTodoComponent implements OnInit {
     get changedTodo(): AbstractControl | null {
         return this.myTodo.get('changedTodo');
     }
+
+    clearValue($event: MouseEvent) {
+        this.changedTodo.reset();
+        $event.stopPropagation();
+    }
 }
