@@ -11,8 +11,12 @@ import {Output, EventEmitter} from '@angular/core';
                     <mat-list-item>
                         <p>{{todo.text}}</p>
                         <div class="mat-list-item--buttons">
-                            <button (click)="removeTodoItem(todo.id)">Delete</button>
-                            <button routerLink="/edit/{{todo.id}}">Edit</button>
+                            <mat-icon (click)="removeTodoItem(todo.id)" aria-hidden="false" aria-label="Delete icon"
+                                      style="cursor: pointer">delete
+                            </mat-icon>
+                            <mat-icon routerLink="/edit/{{todo.id}}" aria-hidden="false" aria-label="Delete icon"
+                                      style="cursor: pointer">edit
+                            </mat-icon>
                         </div>
                     </mat-list-item>
                 </mat-list>
@@ -40,7 +44,6 @@ export class TodoListComponent implements OnInit {
     removeTodoItem(value: number) {
         this.newDeleteEvent.emit(value);
     }
-
 
 
 }
