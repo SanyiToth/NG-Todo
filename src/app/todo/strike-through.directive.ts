@@ -1,18 +1,20 @@
-import {AfterViewInit, Directive, ElementRef, HostBinding, HostListener, Input} from '@angular/core';
-import {ensureOriginalSegmentLinks} from "@angular/compiler-cli/src/ngtsc/sourcemaps/src/source_file";
+import {AfterViewInit, Directive, HostBinding, HostListener} from '@angular/core';
+
 
 @Directive({
     selector: '[StrikeThrough]'
 })
-export class StrikeThroughDirective {
+export class StrikeThroughDirective  {
 
     StrikeThrough: boolean;
 
     constructor() {
     }
 
-    @HostBinding('style.textDecoration') textDecoration: string;
-    @HostBinding('style.color') color: string;
+    @HostBinding('style.textDecoration') textDecoration = 'none';
+    @HostBinding('style.color') color = 'white';
+    @HostBinding('style.cursor') cursor = 'pointer';
+
 
     @HostListener('dblclick')
     onClick(): void {
@@ -25,4 +27,5 @@ export class StrikeThroughDirective {
             this.color = 'white';
         }
     }
+
 }
