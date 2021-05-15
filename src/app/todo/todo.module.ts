@@ -9,7 +9,7 @@ import { MatCardModule} from '@angular/material/card';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import {HttpClientModule} from "@angular/common/http";
 import {MatIconModule} from "@angular/material/icon";
-
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 
 @NgModule({
@@ -25,6 +25,7 @@ import {MatIconModule} from "@angular/material/icon";
         MatListModule,
         MatCardModule,
         HttpClientModule,
+        MatToolbarModule,
         MatIconModule
     ],
     exports: [
