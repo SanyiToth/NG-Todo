@@ -7,13 +7,13 @@
 <form  (submit)="addTodo()" [formGroup]="myTodo">
     <div class="add-todo">
         <mat-form-field class="new-todo-form-field">
-            <mat-label>Clearable input</mat-label>
+            <mat-label>Add your Todo</mat-label>
             <input matInput type="text" formControlName="newTodo">
             <button mat-button *ngIf="newTodo.value" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue($event)">
                 <mat-icon>close</mat-icon>
             </button>
         </mat-form-field>
-        <button mat-flat-button  type="submit" [disabled]="newTodo.invalid">add todo</button>
+        <button mat-flat-button  type="submit" [disabled]="myTodo.invalid">add todo</button>
         <div class="error" *ngIf="newTodo?.invalid && newTodo?.touched && newTodo?.errors?.required">
             Please add a new Todo!
         </div>
