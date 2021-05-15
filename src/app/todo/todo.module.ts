@@ -12,12 +12,14 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button'
 import { MatInputModule} from "@angular/material/input";
+import { StrikeThroughDirective } from './strike-through.directive';
 
 @NgModule({
     declarations: [
         TodoComponent,
         EditTodoComponent,
-        TodoListComponent
+        TodoListComponent,
+        StrikeThroughDirective
     ],
     imports: [
         CommonModule,

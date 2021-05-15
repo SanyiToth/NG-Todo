@@ -7,7 +7,7 @@ import {Output, EventEmitter} from '@angular/core';
     template: `
         <div *ngIf="todos" class="todo-list">
             <mat-card *ngFor="let todo of todos;let i=index">
-                <mat-card-title>{{todo.text}}</mat-card-title>
+                <mat-card-title StrikeThrough>{{todo.text}}</mat-card-title>
                 <div class="todo-item-buttons">
                     <mat-icon (click)="removeTodoItem(todo.id)" aria-hidden="false" aria-label="Delete icon"
                               style="cursor: pointer">delete
