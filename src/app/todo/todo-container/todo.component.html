@@ -3,23 +3,22 @@
     <h1>Ng-Todo</h1>
 </mat-toolbar>
 
-<mat-card>
-    <form #todoForm="ngForm" (submit)="addTodo()" [formGroup]="myTodo">
-        <div class="add-todo">
-            <label for="todo">Todo<br>
-                <input type="text" id="todo" formControlName="newTodo">
-            </label>
-            <button type="submit" [disabled]="todoForm.invalid">add todo</button>
-        </div>
+
+<form #todoForm="ngForm" (submit)="addTodo()" [formGroup]="myTodo">
+    <div class="add-todo">
+        <label for="todo">Todo<br>
+            <input type="text" id="todo" formControlName="newTodo">
+        </label>
+        <button mat-flat-button   type="submit" [disabled]="todoForm.invalid">add todo</button>
         <div class="error" *ngIf="newTodo?.invalid && newTodo?.touched && newTodo?.errors?.required">
             Please add a new Todo!
         </div>
-
         <div class="error" *ngIf="newTodo?.invalid && newTodo?.touched && newTodo.errors?.minlength">
             Todo should be at least 6 characters long!
         </div>
-    </form>
-</mat-card>
+    </div>
+
+</form>
 
 
 <todo-list [todos]="todos" (newDeleteEvent)="removeTodo($event)"></todo-list>

@@ -10,7 +10,8 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import {HttpClientModule} from "@angular/common/http";
 import {MatIconModule} from "@angular/material/icon";
 import {MatToolbarModule} from '@angular/material/toolbar';
-
+import {MatButtonModule} from '@angular/material/button'
+import { MatInputModule} from "@angular/material/input";
 
 @NgModule({
     declarations: [
@@ -26,7 +27,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
         MatCardModule,
         HttpClientModule,
         MatToolbarModule,
-        MatIconModule
+        MatButtonModule,
+        MatIconModule,
+        MatInputModule
     ],
     exports: [
         TodoComponent,
