@@ -43,7 +43,8 @@ export class EditTodoComponent implements OnInit {
     saveTodo() {
         const todo: Todo = {text: this.changedTodo.value}
         this.todoService.updateTodo(this.id, todo).subscribe(response1 => {
-            this.myTodo.reset();
+            this.changedTodo.clearValidators();
+            this.changedTodo.reset();
             this.successAlert = true;
             setTimeout(() => {
                 this.router.navigate([""])

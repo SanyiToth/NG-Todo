@@ -13,7 +13,7 @@ export class TodoComponent implements OnInit {
     myTodo: FormGroup = new FormGroup({
             newTodo: new FormControl(null,
                 [Validators.required, Validators.minLength(6)])
-        }, Validators.required
+        }
     );
     todos: Todo[];
     errorMessage = '';
@@ -41,11 +41,10 @@ export class TodoComponent implements OnInit {
     addTodo(): void {
         const todo = {text: this.newTodo.value}
         this.todoService.addTodo(todo).subscribe(response => {
-            console.log('addTodo', response)
             this.todos = [response, ...this.todos]
         })
-        console.log('myTodo', this.myTodo);
-
+        console.log('newTodo', this.newTodo);
+        this.newTodo.clearValidators();
         this.newTodo.reset();
     }
 
