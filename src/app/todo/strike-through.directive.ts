@@ -1,12 +1,9 @@
 import {
-    AfterViewInit,
     Directive,
-    ElementRef,
-    EventEmitter,
     HostBinding,
     HostListener,
-    Input,
-    Output
+    Input, OnInit,
+
 } from '@angular/core';
 import {Todo} from './todo.interface';
 import {TodoService} from "./todo.service";
@@ -14,13 +11,13 @@ import {TodoService} from "./todo.service";
 @Directive({
     selector: '[StrikeThrough]'
 })
-export class StrikeThroughDirective implements AfterViewInit {
+export class StrikeThroughDirective implements OnInit {
     @Input() todo: Todo;
     @Input() StrikeThrough: boolean;
 
-    @HostBinding('style.textDecoration') textDecoration: string;
-    @HostBinding('style.color') color: string;
-    @HostBinding('style.cursor') cursor: string;
+    @HostBinding('style.textDecoration') textDecoration;
+    @HostBinding('style.color') color;
+    @HostBinding('style.cursor') cursor = 'pointer';
 
     constructor(private todoService: TodoService) {
     }
@@ -40,13 +37,12 @@ export class StrikeThroughDirective implements AfterViewInit {
             this.textDecoration = 'none';
             this.color = 'white';
             newTodo.strikeThrough = false;
-
         }
         this.todoService.updateTodo(this.todo.id, newTodo).subscribe(res => console.log('res', res))
     }
 
 
-    ngAfterViewInit(): void {
+    ngOnInit(): void {
         if (this.StrikeThrough) {
             this.textDecoration = 'line-through';
             this.color = 'red';
@@ -54,7 +50,7 @@ export class StrikeThroughDirective implements AfterViewInit {
             this.textDecoration = 'none';
             this.color = 'white';
         }
-    }
 
+    }
 
 }

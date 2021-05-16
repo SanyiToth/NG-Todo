@@ -24,10 +24,6 @@ export class TodoListComponent implements OnInit {
         console.log(this.todos)
     }
 
-    isStrikeThrough($event): void {
-        console.log('event.id', $event.id)
-        console.log(this.todos)
-    }
 
 
 }
