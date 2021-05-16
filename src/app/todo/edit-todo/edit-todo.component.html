@@ -1,4 +1,4 @@
-<form (submit)="saveTodo()" #todoForm="ngForm">
+<form (submit)="saveTodo($event)" #todoForm="ngForm">
     <div class="add-todo">
         <mat-form-field class="new-todo-form-field">
             <mat-label>Todo</mat-label>

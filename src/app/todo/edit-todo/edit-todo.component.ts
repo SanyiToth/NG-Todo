@@ -39,14 +39,14 @@ export class EditTodoComponent implements OnInit {
             });
     }
 
-    saveTodo() {
+    saveTodo($event) {
         const todo: Todo = {text: this.todoFormControl.value}
         this.todoService.updateTodo(this.id, todo).subscribe(response1 => {
             console.log('response 1', response1)
             this.successAlert = true;
             this.todoFormControl.reset();
             setTimeout(() => {
-                this.router.navigate([""])
+                this.router.navigate([""]);
             }, 1000)
         })
     }

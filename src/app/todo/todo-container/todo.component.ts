@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Todo} from '../todo.interface';
 import {TodoService} from '../todo.service';
@@ -10,6 +10,7 @@ import {switchMap} from "rxjs/operators";
     styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit {
+
 
     todoFormControl = new FormControl('', [
         Validators.required,
@@ -34,11 +35,12 @@ export class TodoComponent implements OnInit {
     };
 
 
-    addTodo(): void {
+    addTodo($event): void {
         const todo = {text: this.todoFormControl.value}
         this.todoService.addTodo(todo).subscribe(response => {
             this.todos = [response, ...this.todos]
         })
+        $event.currentTarget.reset();
         this.todoFormControl.reset();
     }
 
