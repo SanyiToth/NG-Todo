@@ -32,6 +32,7 @@ import { StrikeThroughDirective } from './strike-through.directive';
         MatButtonModule,
         MatIconModule,
         MatInputModule,
+        FormsModule,
     ],
     exports: [
         TodoComponent,

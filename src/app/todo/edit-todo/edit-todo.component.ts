@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {TodoService} from "../todo.service";
 import {switchMap, tap} from "rxjs/operators";
 import {Todo} from "../todo.interface";
-import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, Validators} from "@angular/forms";
 
 
 @Component({
@@ -12,13 +12,13 @@ import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/form
     styleUrls: ['./edit-todo.component.css']
 })
 export class EditTodoComponent implements OnInit {
+    todoFormControl = new FormControl('', [
+        Validators.required,
+        Validators.minLength(6),
+    ]);
     id: number;
     todo: Todo;
     errorMessage;
-    myTodo: FormGroup = new FormGroup({
-        changedTodo: new FormControl(null,
-            [Validators.required, Validators.minLength(6)])
-    });
     successAlert = false;
 
     constructor(private route: ActivatedRoute, private todoService: TodoService, private router: Router) {
@@ -34,30 +34,26 @@ export class EditTodoComponent implements OnInit {
                 switchMap(() => this.todoService.getTodo(this.id)))
             .subscribe(response => {
                 this.todo = response;
-                console.log(this.todo)
             }, error => {
                 this.errorMessage = error;
             });
     }
 
     saveTodo() {
-        const todo: Todo = {text: this.changedTodo.value}
+        const todo: Todo = {text: this.todoFormControl.value}
         this.todoService.updateTodo(this.id, todo).subscribe(response1 => {
-            this.changedTodo.clearValidators();
-            this.changedTodo.reset();
+            console.log('response 1', response1)
             this.successAlert = true;
+            this.todoFormControl.reset();
             setTimeout(() => {
                 this.router.navigate([""])
             }, 1000)
         })
     }
 
-    get changedTodo(): AbstractControl | null {
-        return this.myTodo.get('changedTodo');
-    }
 
     clearValue($event: MouseEvent) {
-        this.changedTodo.reset();
+        this.todoFormControl.reset();
         $event.stopPropagation();
     }
 }
