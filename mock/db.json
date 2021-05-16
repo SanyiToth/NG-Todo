@@ -1,3 +1,17 @@
 {
-  "todos": []
+  "todos": [
+    {
+      "text": "levinni a kutyát sétálnieu",
+      "id": 1
+    },
+    {
+      "text": "proba 15",
+      "strikeThrough": false,
+      "id": 2
+    },
+    {
+      "text": "proba 154",
+      "id": 3
+    }
+  ]
 }
