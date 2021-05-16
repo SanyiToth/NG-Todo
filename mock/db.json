@@ -1,20 +1,19 @@
 {
   "todos": [
     {
-      "text": "levinni a kutyát sétálnieua",
+      "text": "proba 1",
+      "strikeThrough": true,
       "id": 1
     },
     {
-      "text": "proba 34544",
+      "text": "levinni a kutyát sétálni",
+      "strikeThrough": true,
       "id": 2
     },
     {
-      "text": "proba 1344556",
+      "text": "1111111",
+      "strikeThrough": false,
       "id": 3
-    },
-    {
-      "text": "proba 154",
-      "id": 4
     }
   ]
 }

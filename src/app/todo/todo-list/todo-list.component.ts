@@ -16,10 +16,17 @@ export class TodoListComponent implements OnInit {
     }
 
     ngOnInit(): void {
+
     }
 
     removeTodoItem(value: number) {
         this.newDeleteEvent.emit(value);
+        console.log(this.todos)
+    }
+
+    isStrikeThrough($event): void {
+        console.log('event.id', $event.id)
+        console.log(this.todos)
     }
 
 

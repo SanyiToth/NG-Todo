@@ -36,12 +36,17 @@ export class TodoComponent implements OnInit {
 
 
     addTodo($event): void {
-        const todo = {text: this.todoFormControl.value}
+        const todo = {
+            text: this.todoFormControl.value,
+            strikeThrough: false
+        }
         this.todoService.addTodo(todo).subscribe(response => {
             this.todos = [response, ...this.todos]
+            console.log('todos', this.todos);
         })
         $event.currentTarget.reset();
         this.todoFormControl.reset();
+
     }
 
     removeTodo(id) {
