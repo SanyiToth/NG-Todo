@@ -13,7 +13,7 @@ export class TodoService {
     }
 
     getTodos(): Observable<Todo[]> {
-        return this.http.get<Todo[]>(TodoService.API_URL);
+        return this.http.get<Todo[]>(TodoService.API_URL + '?_sort=id&_order=desc');
     }
 
     getTodo(id: number): Observable<Todo> {

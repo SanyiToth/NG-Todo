@@ -4,25 +4,7 @@ import {Output, EventEmitter} from '@angular/core';
 
 @Component({
     selector: 'todo-list',
-    template: `
-        <div *ngIf="todos" class="todo-list">
-            <mat-card *ngFor="let todo of todos;let i=index" StrikeThrough>
-                    <mat-card-title >{{todo.text}}</mat-card-title>
-                    <div class="todo-item-buttons">
-                        <mat-icon (click)="removeTodoItem(todo.id)" aria-hidden="false" aria-label="Delete icon"
-                                  style="cursor: pointer">delete
-                        </mat-icon>
-                        <mat-icon routerLink="/edit/{{todo.id}}" aria-hidden="false" aria-label="Delete icon"
-                                  style="cursor: pointer">edit
-                        </mat-icon>
-                    </div>
-            </mat-card>
-        </div>
-
-        <mat-card *ngIf="todos?.length===0">
-            <h2>No todos yet</h2>
-        </mat-card>
-    `,
+    templateUrl: "todo-list.component.html",
     styleUrls: ["todo-list.component.css"]
 })
 export class TodoListComponent implements OnInit {

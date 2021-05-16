@@ -44,8 +44,7 @@ export class TodoComponent implements OnInit {
             this.todos = [response, ...this.todos]
         })
         console.log('newTodo', this.newTodo);
-       /* this.newTodo.clearValidators();*/
-        this.newTodo.reset();
+        this.myTodo.reset();
     }
 
     removeTodo(id) {
