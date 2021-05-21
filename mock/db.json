@@ -1,16 +1,3 @@
 {
-  "todos": [
-    {
-      "text": "levinni a kutyát",
-      "id": 1
-    },
-    {
-      "text": "sssssss",
-      "id": 2
-    },
-    {
-      "text": "levinni a kutyát",
-      "id": 3
-    }
-  ]
+  "todos": []
 }

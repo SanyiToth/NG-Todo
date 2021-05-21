@@ -9,7 +9,6 @@ import { MatCardModule} from '@angular/material/card';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import {HttpClientModule} from "@angular/common/http";
 import {MatIconModule} from "@angular/material/icon";
-import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button'
 import { MatInputModule} from "@angular/material/input";
 import { StrikeThroughDirective } from './strike-through.directive';
@@ -28,10 +27,10 @@ import { StrikeThroughDirective } from './strike-through.directive';
         MatListModule,
         MatCardModule,
         HttpClientModule,
-        MatToolbarModule,
         MatButtonModule,
         MatIconModule,
         MatInputModule,
+        FormsModule,
     ],
     exports: [
         TodoComponent,

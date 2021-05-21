@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Todo} from '../todo.interface';
 import {TodoService} from '../todo.service';
 import {switchMap} from "rxjs/operators";
@@ -10,16 +10,18 @@ import {switchMap} from "rxjs/operators";
     styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit {
-    myTodo: FormGroup = new FormGroup({
-            newTodo: new FormControl(null,
-                [Validators.required, Validators.minLength(6)])
-        }
-    );
+
+
+    todoFormControl = new FormControl('', [
+        Validators.required,
+        Validators.minLength(6),
+    ]);
+
     todos: Todo[];
     errorMessage = '';
 
-    constructor(private formBuilder: FormBuilder, private todoService: TodoService) {
-        /*  this.myTodo = this.createMyForm();*/
+
+    constructor(private todoService: TodoService) {
     }
 
 
@@ -32,20 +34,19 @@ export class TodoComponent implements OnInit {
         })
     };
 
-    /*    createMyForm(): FormGroup {
-            return this.formBuilder.group({
-                newTodo: [null, [Validators.required, Validators.minLength(6)]]
-            });
-        }*/
 
-    addTodo(): void {
-        const todo = {text: this.newTodo.value}
+    addTodo($event): void {
+        const todo = {
+            text: this.todoFormControl.value,
+            strikeThrough: false
+        }
         this.todoService.addTodo(todo).subscribe(response => {
             this.todos = [response, ...this.todos]
+            console.log('todos', this.todos);
         })
-        console.log('newTodo', this.newTodo);
-       /* this.newTodo.clearValidators();*/
-        this.newTodo.reset();
+        $event.currentTarget.reset();
+        this.todoFormControl.reset();
+
     }
 
     removeTodo(id) {
@@ -60,13 +61,9 @@ export class TodoComponent implements OnInit {
             )
     }
 
-    get newTodo(): AbstractControl | null {
-        return this.myTodo.get('newTodo');
-    }
-
-
     clearValue($event: MouseEvent) {
-        this.newTodo.reset();
+        this.todoFormControl.reset();
         $event.stopPropagation();
     }
+
 }

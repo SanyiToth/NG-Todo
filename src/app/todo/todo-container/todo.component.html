@@ -1,27 +1,23 @@
-<mat-toolbar>
-    <mat-icon>star</mat-icon>
-    <h1>Ng-Todo</h1>
-</mat-toolbar>
 
 
-<form  (submit)="addTodo()" [formGroup]="myTodo">
+
+<form (submit)="addTodo($event)" >
     <div class="add-todo">
         <mat-form-field class="new-todo-form-field">
-            <mat-label>Add your Todo</mat-label>
-            <input matInput type="text" formControlName="newTodo">
-            <button mat-button *ngIf="newTodo.value" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue($event)">
+            <mat-label>Todo</mat-label>
+            <input type="text" matInput [formControl]="todoFormControl" placeholder="Ex. go shopping" >
+            <button mat-button *ngIf="todoFormControl.value" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue($event)">
                 <mat-icon>close</mat-icon>
             </button>
+            <mat-error *ngIf="todoFormControl.hasError('minlength') && !todoFormControl.hasError('required')">
+                Todo should be at least 6 characters long!
+            </mat-error>
+            <mat-error *ngIf="todoFormControl.hasError('required')">
+                Todo is <strong>required</strong>
+            </mat-error>
         </mat-form-field>
-        <button mat-flat-button  type="submit" [disabled]="myTodo.invalid">add todo</button>
-        <div class="error" *ngIf="newTodo?.invalid && newTodo?.touched && newTodo?.errors?.required">
-            Please add a new Todo!
-        </div>
-        <div class="error" *ngIf="newTodo?.invalid && newTodo?.touched && newTodo.errors?.minlength">
-            Todo should be at least 6 characters long!
-        </div>
+        <button mat-flat-button type="submit" [disabled]="todoFormControl.invalid">add todo</button>
     </div>
-
 </form>
 
 
